@@ -1,0 +1,38 @@
+{
+    "name": "redot/laravel-toastify",
+    "description": "A simple package to use toastify.js in laravel applications",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Abdelrhman Said",
+            "email": "abdelrhmansaidzaki@hotmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Redot\\LaravelToastify\\": "src/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "require": {
+        "php": "^8.1",
+        "illuminate/support": "^8.0|^9.0|^10.0"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.10"
+    },
+    "config": {
+        "lock": false,
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Redot\\LaravelToastify\\LaravelToastifyServiceProvider"
+            ]
+        }
+    }
+}
