@@ -25,7 +25,6 @@
         "laravel/pint": "^1.10"
     },
     "config": {
-        "lock": false,
         "sort-packages": true
     },
     "scripts": {
