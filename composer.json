@@ -28,6 +28,9 @@
         "lock": false,
         "sort-packages": true
     },
+    "scripts": {
+        "lint": "vendor/bin/pint"
+    },
     "extra": {
         "laravel": {
             "providers": [
