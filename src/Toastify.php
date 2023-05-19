@@ -3,6 +3,7 @@
 namespace Redot\LaravelToastify;
 
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\View;
 
 /**
  * @method void toast(string $message, array $options = [])
@@ -14,11 +15,19 @@ use Illuminate\Support\Facades\Session;
 class Toastify
 {
     /**
-     * Magic method to call toast methods.
+     * Get toastify css.
      */
-    public function __call(string $name, array $arguments)
+    public function css(): string
     {
-        $this->push($arguments[0], $name, $arguments[1] ?? []);
+        return View::make('toastify::css')->render();
+    }
+
+    /**
+     * Get toastify js.
+     */
+    public function js(): string
+    {
+        return View::make('toastify::js')->render();
     }
 
     /**
@@ -27,5 +36,13 @@ class Toastify
     protected function push(string $message, string $type, array $options = []): void
     {
         Session::push('toastify', compact('message', 'type', 'options'));
+    }
+
+    /**
+     * Magic method to call toast methods.
+     */
+    public function __call(string $name, array $arguments)
+    {
+        $this->push($arguments[0], $name, $arguments[1] ?? []);
     }
 }

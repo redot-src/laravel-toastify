@@ -1,22 +1,28 @@
 # Laravel Toastify
 
-Laravel Toastify is a library for integrating [toastify-js](https://github.com/apvarun/toastify-js) into Laravel applications. It provides an easy way to display toast messages in your application.
+Laravel Toastify is a PHP library that allows you to quickly and easily display toast messages in your Laravel applications. It is built on top of [toastify-js](https://github.com/apvarun/toastify-js), a JavaScript library for displaying beautiful toast messages.
 
 ## Installation
 
-Install the package via composer:
+Installation of Laravel Toastify is easy. Simply run the following command:
 
 ```bash
 composer require redot/laravel-toastify
 ```
 
-Then add the following line to the end of your blade layout file:
+Then, add the following line to the head section of your `app.blade.php` file:
 
 ```html
-@include('toastify::toastify')
+@toastifyCss
 ```
 
-If you want to customize the default configuration, you can publish the configuration file:
+And the following line to the bottom of your `app.blade.php` file:
+
+```html
+@toastifyJs
+```
+
+If you want to customize the default configuration, you can publish the configuration file using this command:
 
 ```bash
 php artisan vendor:publish --tag=toastify-config
@@ -24,32 +30,22 @@ php artisan vendor:publish --tag=toastify-config
 
 ## Usage
 
-To display a toast message, you can use the `toastify()` helper function:
+To display a toast message, simply call the `toastify()` helper function with the desired type and message:
 
 ```php
-toastify()->success('/* ... */');
+toastify()->success('Your action was successful!');
 ```
 
-The `toastify()` helper function returns an instance of `Redot\LaravelToastify\Toastify`, which provides the following methods by default:
+There are five predefined methods available by default: `success()`, `info()`, `warning()`, `error()`, and `toast()`. Each method accepts two parameters: the message to display and an optional options array.
 
 ```php
-toastify()->success('/* ... */');
-toastify()->info('/* ... */');
-toastify()->warning('/* ... */');
-toastify()->error('/* ... */');
-toastify()->toast('/* ... */');
-```
-
-Each method accepts two parameters: the message to display, and an optional options array. The options array can be used to override the default options specified in the configuration file.
-
-```php
-toastify()->success('/* ... */', [
+toastify()->success('Your action was successful!', [
     'duration' => 5000,
     // ...
 ]);
 ```
 
-If you want to extend the `Toastify` class with your own methods, you can add them to the configuration file in the 'toastifiers' array:
+If you want to create custom toast types, you can add them in the `toastifiers` array of the configuration file.
 
 ```php
 'toastifiers' => [
@@ -71,12 +67,12 @@ toastify()->custom('/* ... */');
 
 ## Client-side usage
 
-Laravel Toastify provides a `toastify` method to the `window` object, which can be used to display toast messages from your JavaScript code just like the `toastify()` helper function in PHP:
+Laravel Toastify also provides a client-side `toastify()` method that you can use to display toast messages from your JavaScript code. The syntax is similar to the server-side `toastify()` helper function:
 
 ```javascript
-toastify().success('/* ... */');
+toastify().success('Your action was successful!');
 ```
 
 ## Configuration
 
-The configuration file for Laravel Toastify is located at `config/toastify.php`. Here you can specify the CDN links for the toastify library, as well as the default toastifiers.
+The configuration file for Laravel Toastify is located at `config/toastify.php`. Here you can specify the CDN links for the toastify library and customize the default toastifiers.

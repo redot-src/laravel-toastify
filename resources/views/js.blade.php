@@ -1,5 +1,4 @@
 <script src="{{ config('toastify.cdn.js') }}"></script>
-<link rel="stylesheet" href="{{ config('toastify.cdn.css') }}">
 
 <script>
     (() => {

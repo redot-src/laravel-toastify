@@ -2,6 +2,7 @@
 
 namespace Redot\LaravelToastify;
 
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
 class LaravelToastifyServiceProvider extends ServiceProvider
@@ -11,9 +12,11 @@ class LaravelToastifyServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $this->app->singleton(Toastify::class, function () {
-            return new Toastify();
-        });
+        $this->app->singleton(Toastify::class, fn () => new Toastify());
+        $this->app->alias(Toastify::class, 'toastify');
+
+        Blade::directive('toastifyCss', fn () => "<?php echo app('toastify')->css(); ?>");
+        Blade::directive('toastifyJs', fn () => "<?php echo app('toastify')->js(); ?>");
     }
 
     /**
