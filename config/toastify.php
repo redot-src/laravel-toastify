@@ -12,8 +12,8 @@ return [
     */
 
     'cdn' => [
-        'js' => 'https://unpkg.com/toastify-js@1.11.2/src/toastify.js',
-        'css' => 'https://unpkg.com/toastify-js@1.11.2/src/toastify.css',
+        'js' => 'https://unpkg.com/toastify-js@1.12.0/src/toastify.js',
+        'css' => 'https://unpkg.com/toastify-js@1.12.0/src/toastify.css',
     ],
 
     /*
