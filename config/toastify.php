@@ -29,31 +29,31 @@ return [
     'toastifiers' => [
         'toast' => [
             'style' => [
-                'text' => '#fff',
+                'color' => '#fff',
                 'background' => '#182433',
             ],
         ],
         'error' => [
             'style' => [
-                'text' => '#fff',
+                'color' => '#fff',
                 'background' => '#d63939',
             ],
         ],
         'success' => [
             'style' => [
-                'text' => '#fff',
+                'color' => '#fff',
                 'background' => '#2fb344',
             ],
         ],
         'info' => [
             'style' => [
-                'text' => '#fff',
+                'color' => '#fff',
                 'background' => '#4299e1',
             ],
         ],
         'warning' => [
             'style' => [
-                'text' => '#fff',
+                'color' => '#fff',
                 'background' => '#f76707',
             ],
         ],
