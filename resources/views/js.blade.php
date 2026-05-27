@@ -31,6 +31,16 @@
             window.toastify()[type](message, options);
         });
     });
+
+    // Display toasts dispatched from Livewire components
+    document.addEventListener('livewire:init', () => {
+        Livewire.on('toastify', (event) => {
+            const { type, message, options = {} } = Array.isArray(event) ? event[0] : event;
+
+            const toastifiers = window.toastify();
+            if (toastifiers[type]) toastifiers[type](message, options);
+        });
+    });
 </script>
 
 {{ session()->forget('toastify') }}
