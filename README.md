@@ -65,6 +65,37 @@ You can then use the `toastify()` helper function to call your custom method:
 toastify()->custom('/* ... */');
 ```
 
+## Livewire usage
+
+The session-based helper relies on a full page load to flush its messages, so it won't display toasts triggered during a Livewire request. For Livewire components, use the `InteractsWithToastify` trait instead. It dispatches the toast to the browser, where it is rendered immediately without a page reload.
+
+```php
+use Livewire\Component;
+use Redot\LaravelToastify\Concerns\InteractsWithToastify;
+
+class SaveProfile extends Component
+{
+    use InteractsWithToastify;
+
+    public function save(): void
+    {
+        // ...
+
+        $this->toastify()->success('Your profile was updated!');
+    }
+}
+```
+
+The same methods and options available on the `toastify()` helper are available here:
+
+```php
+$this->toastify()->error('Something went wrong.', [
+    'duration' => 5000,
+]);
+```
+
+Make sure `@toastifyJs` is present in your layout (it registers the Livewire listener that renders these toasts).
+
 ## Client-side usage
 
 Laravel Toastify also provides a client-side `toastify()` method that you can use to display toast messages from your JavaScript code. The syntax is similar to the server-side `toastify()` helper function:

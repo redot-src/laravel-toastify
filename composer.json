@@ -24,6 +24,9 @@
     "require-dev": {
         "laravel/pint": "^1.21"
     },
+    "suggest": {
+        "livewire/livewire": "Required to dispatch client-side toasts from Livewire components via the InteractsWithToastify trait (^3.0)."
+    },
     "config": {
         "sort-packages": true
     },
